@@ -7,6 +7,7 @@ dotenv.config()
 const mode = process.env.NODE_ENV ?? 'production'
 const isDev = process.env.NODE_ENV !== 'production'
 const PORT = process.env.PORT
+console.log("env", process.env.PORT)
 
 module.exports = {
   name: 'client',

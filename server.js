@@ -6,7 +6,7 @@ dotenv.config()
 
 const PORT = process.env.PORT;
 const app = express();
-
+console.log("path", __dirname)
 app.use(express.static(path.join(__dirname, 'dist')));
 
 app.get('/', function (req, res) {
