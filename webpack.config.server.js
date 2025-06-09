@@ -6,7 +6,7 @@ dotenv.config();
 
 const mode = process.env.NODE_ENV ?? 'production';
 const isDev = process.env.NODE_ENV !== 'production';
-console.log("env", process.env.PORT);
+console.log("env servidor", process.env.NODE_ENV);
 
 module.exports = {
   name: 'server',
@@ -14,6 +14,7 @@ module.exports = {
   mode,
   target: 'node', //Cuando traspilamos código de backend
   stats: 'errors-only',
+  devtool: 'source-map',
   output: {
     path: path.join(__dirname, '/dist'),
     filename: 'index.js',

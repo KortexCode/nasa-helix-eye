@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const MenuButton = styled.button`
-  display: ${({ hidden }) => hidden ? 'none' : 'block'};
+  display: block;
   border: none;
   background: linear-gradient(270deg, #2646A6,#0C87F2);
   font-size: 1.5rem;

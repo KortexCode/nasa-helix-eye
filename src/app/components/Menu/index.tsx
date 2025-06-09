@@ -13,9 +13,9 @@ export const Menu = () => {
 
   return (
     <>
-      <MenuButton hidden={menuIsVisible} onClick={openMenu}>
+      {!menuIsVisible && <MenuButton onClick={openMenu}>
         <FontAwesomeIcon icon={faBars} />
-      </MenuButton>
+      </MenuButton>}
       <MenuContainer hidden={!menuIsVisible}>
         <button onClick={closeMenu} aria-label="cerrar">
           <FontAwesomeIcon icon={faTimes} />

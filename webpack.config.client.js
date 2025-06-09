@@ -1,5 +1,4 @@
 const path = require('path')
-const HTMLWebpackPlugin = require('html-webpack-plugin');
 const dotenv = require('dotenv')
 
 dotenv.config()
@@ -7,7 +6,7 @@ dotenv.config()
 const mode = process.env.NODE_ENV ?? 'production'
 const isDev = process.env.NODE_ENV !== 'production'
 const PORT = process.env.PORT
-console.log("env", process.env.PORT)
+console.log("env cliente", process.env.NODE_ENV)
 
 module.exports = {
   name: 'client',
@@ -51,10 +50,7 @@ module.exports = {
       },
     ]
   },
-  plugins: [
-    new HTMLWebpackPlugin({
-      template: './src/public/index.html',
-    })
+  plugins: [//Ya no se usa porque se generará el html desde el servidor (SSR)
   ],
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],

@@ -1,9 +1,10 @@
 import express, { Application, Response, Request } from "express";
-import { config } from "../../config";
-
+import { config } from "./config";
+import { render } from "./render";
 
 const app: Application = express();
+app.use(express.static('dist'));
 app.get('*', (req: Request, res: Response) => {
-    res.send(`<h2>Hola mundo desde ${req.url}</h2>`);
+    res.send(render(req.url));
 });
 app.listen(config.PORT, () => console.log(`Serverlistening on http://localhost:${config.PORT}/`));
