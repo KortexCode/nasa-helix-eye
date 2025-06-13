@@ -7,7 +7,6 @@ import { ServerStyleSheet } from "styled-components";
 const app: Application = express();
 
 app.use(express.static("dist")); // Servir archivos estáticos desde la carpeta dist
-
 app.get("*", async (req: Request, res: Response) => {
 let initialProps = {};//Se declara variable para las porps inciales
 const sheet = new ServerStyleSheet(); // NECESARIO para styled-components con SSR
