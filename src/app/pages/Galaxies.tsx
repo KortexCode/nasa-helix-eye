@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { GalaxiesLayout } from '../components/GalaxiesLayout';
 import { LoadingSpinner } from '../components/LoadingSpinner';
@@ -12,13 +12,22 @@ const GalaxiesPageWrapper = styled.div`
 `
 
 export const Galaxies = () => {
+  const [galaxias, setGalaxias] = useState([]);
+ /*  const { galaxies, requestStatus } = useFetchGalaxiesInfo(); */
 
-  const { galaxies, requestStatus } = useFetchGalaxiesInfo()
+ useEffect(() => {
+  const data = window.__INITIAL_PROPS__;
+  if(Object.keys(data).length === 0) return
+  setGalaxias(data.galaxias);
+ });
 
   const renderLayout = () => {
-    if (requestStatus === LOADING_STATUS) return <LoadingSpinner />
-    if (requestStatus === ERROR_STATUS) return <h1>Error</h1>
-    return <GalaxiesLayout galaxies={galaxies} />
+    
+    console.log(galaxias);
+  
+    if (galaxias.length === 0) return <LoadingSpinner />
+   /*  if (requestStatus === ERROR_STATUS) return <h1>Error</h1> */
+    return <GalaxiesLayout galaxies={galaxias} />
   }
 
   return (
