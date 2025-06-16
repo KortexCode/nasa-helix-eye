@@ -1,16 +1,26 @@
-const path = require('path')
-const dotenv = require('dotenv')
+const path = require('path');
+const dotenv = require('dotenv');
+const { HotModuleReplacementPlugin } = require('webpack');
 
-dotenv.config()
+dotenv.config();
 
-const mode = process.env.NODE_ENV ?? 'production'
-const isDev = process.env.NODE_ENV !== 'production'
-const PORT = process.env.PORT
-console.log("env cliente", process.env.NODE_ENV)
+const mode = process.env.NODE_ENV ?? 'production';
+const isDev = process.env.NODE_ENV !== 'production';
+const PORT = process.env.PORT;
+console.log("env cliente", process.env.NODE_ENV);
+
+
+let entries = ['./src/app/index.tsx'];
+let plugins = [];
+
+if(isDev){
+  entries.unshift('webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true')
+  plugins.push(new HotModuleReplacementPlugin())
+}
 
 module.exports = {
   name: 'client',
-  entry: './src/app/index.tsx',
+  entry: entries,
   mode,
   devtool: isDev ? 'eval-source-map' : undefined,
   stats: 'errors-only',
@@ -50,8 +60,7 @@ module.exports = {
       },
     ]
   },
-  plugins: [//Ya no se usa porque se generará el html desde el servidor (SSR)
-  ],
+  plugins,
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
   },
