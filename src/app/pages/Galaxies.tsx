@@ -16,6 +16,7 @@ export const Galaxies = () => {
  /*  const { galaxies, requestStatus } = useFetchGalaxiesInfo(); */
 
  useEffect(() => {
+  
   const data = window.__INITIAL_PROPS__;
   if(Object.keys(data).length === 0) return
   setGalaxias(data.galaxias);
